@@ -1,38 +1,510 @@
 .App {
-  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.task-input input {
+  padding: 8px;
+  margin-right: 10px;
+  width: 70%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.task-input button {
+  padding: 8px 12px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.task-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.task-list li {
+  cursor: pointer;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.task-list li.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.delete-btn {
+  margin-left: 10px;
+  color: red;
+  cursor: pointer;
+}
+
+.categories {
+  margin-bottom: 10px;
+}
+
+.categories button {
+  margin-right: 5px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.categories button.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.task-input {
+  margin-bottom: 10px;
+}
+
+/* Updated CSS for task priorities */
+.task-list li {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 5px;
+}
+
+.priority {
+  margin-right: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.low {
+  background-color: #28a745;
+  /* Green for low priority */
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.medium {
+  background-color: #ffc107;
+  /* Yellow for medium priority */
+  color: #333;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.high {
+  background-color: #dc3545;
+  /* Red for high priority */
+  color: white;
+}
+
+/* Updated CSS for task priorities and due dates */
+.task-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Align items horizontally */
+  margin-bottom: 5px;
+}
+
+.priority {
+  margin-right: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.low {
+  background-color: #28a745;
+  /* Green for low priority */
+  color: white;
+}
+
+.medium {
+  background-color: #ffc107;
+  /* Yellow for medium priority */
+  color: #333;
+}
+
+.high {
+  background-color: #dc3545;
+  /* Red for high priority */
+  color: white;
+}
+
+.task-list li input[type="date"] {
+  margin-left: auto;
+  /* Push input to the right */
+}
+
+/* Updated CSS for search and filter */
+.search-filter {
+  margin-bottom: 10px;
+}
+
+.search-filter input[type="text"] {
+  margin-right: 10px;
+  padding: 8px;
+}
+
+.search-filter select {
+  padding: 8px;
+  border-radius: 5px;
+}
+
+/* Updated CSS for task list items */
+.task-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.task-list li:hover {
+  background-color: #e0e0e0;
+}
+
+.task-list li.completed {
+  background-color: #d6ffd6;
+  /* Light green for completed tasks */
+}
+
+/* Updated CSS for task input bar */
+.task-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.task-input input[type="text"] {
+  flex: 1;
+  /* Take remaining space */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.task-input button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  /* Blue color for the button */
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.task-input button:hover {
+  background-color: #0056b3;
+  /* Darker blue on hover */
+}
+
+/* Updated CSS for search and filter */
+.search-filter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-filter input[type="text"] {
+  flex: 1;
+  /* Take remaining space */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.search-filter select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #fff;
+  /* White background for dropdown */
+}
+
+.search-filter select:hover {
+  border-color: #007bff;
+  /* Highlight border on hover */
+}
+
+.search-filter select:focus {
+  outline: none;
+  border-color: #007bff;
+  /* Highlight border on focus */
+}
+
+/* Updated CSS for task list items and remaining time */
+.task-list li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.task-list li:hover {
+  background-color: #e0e0e0;
+}
+
+.task-list li.completed {
+  background-color: #d6ffd6;
+}
+
+/* Updated CSS for remaining time text */
+.remaining-time {
+  font-size: 12px;
+  color: #666;
+  margin-left: 10px;
+  /* Add margin to separate from the date input */
+}
+
+/* Updated CSS for info button and task list items */
+.task-list li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.task-list li:hover {
+  background-color: #e0e0e0;
+}
+
+.task-list li.completed {
+  background-color: #d6ffd6;
+}
+
+.info-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.info-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Updated CSS for info button and task list items */
+.task-list li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.task-list li:hover {
+  background-color: #e0e0e0;
+}
+
+.task-list li.completed {
+  background-color: #d6ffd6;
+}
+
+.info-btn {
+  margin-left: 10px;
+  /* Add margin to create a gap */
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.info-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Updated CSS for info button and task list items */
+.task-list li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.task-list li:hover {
+  background-color: #e0e0e0;
+}
+
+.task-list li.completed {
+  background-color: #d6ffd6;
+}
+
+.info-btn {
+  margin-left: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.info-btn:hover {
+  background-color: #0056b3;
+}
+
+/* CSS for popup */
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  /* Ensure popup appears above other content */
+}
+
+.popup {
+  width: 300px;
+  /* Adjust the width as needed */
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  /* Shadow effect for popup */
+  z-index: 1010;
+  /* Ensure popup is above the background */
+}
+
+.edit-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-btn:hover {
+  background-color: #0056b3;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  flex: 1;
+  /* Takes up remaining space */
+}
+
+.header-right {
+  display: flex;
+  /* Nested flexbox for right side */
+  gap: 10px;
+  /* Adjust spacing between buttons */
+}
+
+.edit-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-btn:hover {
+  background-color: #0056b3;
+}
+
+.close-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.close-btn:hover {
+  background-color: #0056b3;
+}
+
+.popup-content {
+  padding: 20px;
+  max-height: 300px;
+  /* Set a maximum height for the popup content */
+  overflow-y: auto;
+  /* Enable vertical scrolling when content exceeds height */
+}
+
+.edit-textarea {
+  width: 100%;
+  max-width: 100%;
+  /* Ensure the textarea stays within the popup width */
+  height: 200px;
+  /* Set a fixed or maximum height for the textarea */
+  resize: vertical;
+  /* Allow vertical resizing */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.edit-textarea:focus {
+  outline: none;
+  /* Remove focus outline */
+  border-color: #007bff;
+  /* Highlight border color when focused */
+}
+
+.saved-text {
+  overflow: hidden;
+  /* Prevent overflow if content exceeds height */
+  max-height: 300px;
+  /* Set a maximum height for the saved text */
+  margin: 0;
+  /* Remove default margin to prevent spacing issues */
+  padding: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  /* Adjust line height as needed */
+  word-wrap: break-word;
+  /* Break long words to avoid overflow */
+  white-space: pre-wrap;
+  /* Preserve whitespace and wrap lines */
 }
