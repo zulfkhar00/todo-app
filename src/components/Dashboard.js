@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Task } from "../models/Task";
 import "../App.css";
 
@@ -12,13 +13,20 @@ const App = () => {
   const [editMode, setEditMode] = useState(false); // State for edit mode
   const [editedTaskDetails, setEditedTaskDetails] = useState("");
   const [currentTaskId, setCurrentTaskId] = useState("");
+  const navigate = useNavigate();
 
   const user = JSON.parse(localStorage.getItem("user"));
-  const url = `http://localhost:8000/get_tasks?email=${encodeURIComponent(
-    user.email
-  )}`;
 
   useEffect(() => {
+    console.log(`DASHBOARD: ${user === null}`);
+    if (user === null) {
+      navigate("/");
+      return;
+    }
+    const url = `http://localhost:8000/get_tasks?email=${encodeURIComponent(
+      user.email
+    )}`;
+
     async function fetchData() {
       fetch(url)
         .then((response) => {
@@ -47,7 +55,7 @@ const App = () => {
         });
     }
     fetchData();
-  }, [url]);
+  }, []);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
