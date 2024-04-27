@@ -76,6 +76,22 @@ export default function Home() {
           </Container>
         </div>
       </main>
+
+      <footer className={classes.footer}>
+        <Typography variant="body2">
+          <a href="#" className={classes.footerLink}>
+            About Us
+          </a>{" "}
+          |{" "}
+          <a href="#" className={classes.footerLink}>
+            Terms of Use
+          </a>{" "}
+          |{" "}
+          <a href="#" className={classes.footerLink}>
+            Contact Us
+          </a>
+        </Typography>
+      </footer>
     </>
   );
 }

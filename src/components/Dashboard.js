@@ -221,9 +221,20 @@ const App = () => {
     return { days, hours };
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    navigate("/");
+  };
+
   return (
     <div className="App">
-      <h1>To-Do List</h1>
+      <div className="header">
+        <h1>To-Do List</h1>
+        <button className="logout-btn" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
+
       <div className="task-input">
         <input
           type="text"

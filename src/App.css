@@ -15,9 +15,14 @@
   padding: 8px 12px;
 }
 
+.task-input {
+  margin-top: 30px;
+}
+
 .task-list {
   list-style-type: none;
   padding: 0;
+  margin-top: 40px;
 }
 
 .task-list li {
@@ -172,7 +177,7 @@
 .task-input {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .task-input input[type="text"] {
@@ -507,4 +512,33 @@
   /* Break long words to avoid overflow */
   white-space: pre-wrap;
   /* Preserve whitespace and wrap lines */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  /* Add margin to separate from other content */
+}
+
+.header h1 {
+  margin: 0;
+  /* Remove default margin for h1 */
+}
+
+.logout-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #dc3545;
+  /* Red color for logout button */
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+  /* Darker red on hover */
 }
