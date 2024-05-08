@@ -87,8 +87,8 @@ export default function Home() {
             Terms of Use
           </a>{" "}
           |{" "}
-          <a href="#" className={classes.footerLink}>
-            Contact Us
+          <a href="" className={classes.footerLink}>
+            <Button onClick={() => navigate("/contact-us")}>Contact Us</Button>
           </a>
         </Typography>
       </footer>
